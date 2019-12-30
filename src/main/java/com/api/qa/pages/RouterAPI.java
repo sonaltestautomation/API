@@ -2,7 +2,10 @@ package com.api.qa.pages;
 
 import static org.testng.Assert.assertEquals;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
+import org.eclipse.persistence.sessions.serializers.JSONSerializer;
 import org.json.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -29,16 +32,18 @@ import io.restassured.specification.RequestSpecification;
 
 
 public class RouterAPI {
+	
+
 
 	@BeforeMethod
 	public void setup() {
 
 	}
 
-	@Test
+	@Test(enabled=true)
 	public void Login_Post() throws ParseException {
 		
-		//Created by sonal
+		//Created by sonal	
 		RequestSpecification req = RestAssured.given();
 		req.header("Content-Type", "application/json");
 		req.header("user-type", "manager");
@@ -50,32 +55,58 @@ public class RouterAPI {
 		json.put("email", "managertest17@gmail.com");
 		json.put("password", "Test@123");
 
-//		json.put("company_id", 1183);
-//		json.put("contest_name", "Testdfsdf123");
-//		json.put("contest_start_date", "2019-12-09");
-//		json.put("contest_end_date", "2019-12-15");
-
 		req.body(json.toJSONString());
 
 		Response response = req.post("https://dev-api.1huddle.co/api/rest/v1.5/auth/login");
 		int statuscode = response.getStatusCode();
 		ResponseBody body=response.getBody();
+		String responseData=body.asString();
 		
-		System.out.println("Response Body: "+body.asString());
+		System.out.println("Response Body: "+responseData);
 		System.out.println("Status Code: " + statuscode);
 		
 		JSONParser jsonParser = new JSONParser();
-		
-			JSONObject jsonObject = (JSONObject) jsonParser.parse(body.asString());
-		
-		String token = (String) jsonObject.get("onehuddletoken");	
-		
-		System.out.println("Authentication Token: "+token);
+		try {
+			JSONObject jsonObject = (JSONObject) jsonParser.parse(responseData);
+			JSONObject data= (JSONObject) jsonObject.get("data");
+			//JSONObject manager= (JSONObject) data.get("manager");
+			JSONObject authentication= (JSONObject) data.get("authentication");
+			String token=(String) authentication.get("onehuddletoken");
+			System.out.println("Authentication Token: "+token);
+			
+		} catch (ParseException e) {
+			 //TODO Auto-generated catch block
+			e.printStackTrace();
+		}					
 		Assert.assertEquals(statuscode, 200);
 	}
-	@Test
+	@Test(enabled=false)
 	public void CreateContest_POST()
 	{
+		RequestSpecification req = RestAssured.given();
+		req.header("Content-Type", "application/json");
+		req.header("accept", "application/json");
+		req.header("session-token","5e2961e15a782bc15532274481dfe5b7Hpta8TYCxD3Qr5R34IxheJh2HwbRftoaRL8oBu7H");	
+		 LocalDateTime startDate = LocalDateTime.now().plusMinutes(2);
+		 LocalDateTime endDate = LocalDateTime.now().plusMinutes(5);
+	     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+		
+		JSONObject json = new JSONObject();
+		
+		json.put("company_id", "1183");
+		json.put("contest_name", "Test Contest");
+		json.put("contest_start_date", "" + startDate.format(formatter) + "");
+		json.put("contest_end_date", "" + endDate.format(formatter) + "");
+		System.out.println(json);
+		
+		req.body(json.toJSONString());
+		Response response=req.post("https://dev-api.1huddle.co/api/rest/v2.0/contest/add");
+		int statuscode= response.getStatusCode();
+		ResponseBody body=response.getBody();
+
+		System.out.println("Response Body: "+body.asString());
+		System.out.println("Status Code: " + statuscode);
 		
 	}
 
@@ -83,46 +114,5 @@ public class RouterAPI {
 	public void TearDown() {
 
 	}
-
-//	@Test
-//	void testCreateContestEndpoint() throws IOException {
-//
-//		String expectedMessage = "Contest added successfully.";
-//		Integer validCompanyId = 1;
-//		Integer validManagerId = 1;
-//		boolean status = true;
-//
-//		if (status) {
-//			try {
-//				HttpRequestWithBody requestWithBody = Unirest.post("https://dev-api.1huddle.co/api/rest/v2.0/contest/add").header("Content-Type",
-//						"application/json")
-//	                       .header("session-token", "71e8512853cb4e5654f527a1192b27detjKd5xPlVlmM1c9U6uC7Q3lqqG6JCbIi9Q3YmxzK");
-//				// Set body
-//				JSONObject requestJson = new JSONObject();
-//				requestJson.put("company_id", validCompanyId);
-//				requestJson.put("created_by", validManagerId);
-//				RequestBodyEntity requestBodyEntity = requestWithBody.body(requestJson.toString());
-//
-//				HttpResponse<JsonNode> jsonNodeHttpResponse;
-//				try {
-//					jsonNodeHttpResponse = requestBodyEntity.asJson();
-//				} catch (UnirestException e) {
-//					throw new RuntimeException(e);
-//				}
-//
-//				String jsonString = jsonNodeHttpResponse.getBody().toString();
-//				JSONObject jsonObj = new JSONObject();
-//
-////				String responseMessage = ((Object) jsonObj).getString("message");
-////				assertEquals(expectedMessage, responseMessage);
-//				System.out.println("Test case 1 execute successfully - Test to create contest using Endpoint");
-//
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		} else {
-//			assert (false) : "Application server is not running";
-//		}
-//	}
 
 }

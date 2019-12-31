@@ -5,6 +5,7 @@
     <classes>
       <class name="com.api.qa.pages.RouterAPI">
         <methods>
+          <include name="CreateContest_POST"/>
           <include name="setup"/>
           <include name="Login_Post"/>
           <include name="TearDown"/>

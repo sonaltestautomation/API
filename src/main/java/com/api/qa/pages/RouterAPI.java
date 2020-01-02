@@ -35,9 +35,14 @@ import io.restassured.specification.RequestSpecification;
 public class RouterAPI {
 	
 	String token;
+	JSONObject json = new JSONObject();
+	JSONParser jsonParser = new JSONParser();
+	int company_id;
+	int contest_id;
 
 	@BeforeMethod
 	public void setup() {
+		
 
 	}
 	
@@ -53,7 +58,6 @@ public class RouterAPI {
 		req.header("api-key", "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID");
 		req.header("api-secret", "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID");
 
-		JSONObject json = new JSONObject();
 		json.put("email", "apiautomationmanager@gmail.com");
 		json.put("password", "pass");
 
@@ -66,7 +70,7 @@ public class RouterAPI {
 		
 		System.out.println("Response Body for Login: "+responseData);		
 		
-		JSONParser jsonParser = new JSONParser();
+	
 		//try {
 			JSONObject jsonObject = (JSONObject) jsonParser.parse(responseData);
 			JSONObject data= (JSONObject) jsonObject.get("data");
@@ -98,8 +102,6 @@ public class RouterAPI {
 		 LocalDateTime endDate = LocalDateTime.now().plusMinutes(5);
 	     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-		
-		JSONObject json = new JSONObject();
 		Random rand= new Random();
 		int no=rand.nextInt(1000);
 		
@@ -115,17 +117,28 @@ public class RouterAPI {
 		String responseData=body.asString();
 		
 		System.out.println("Response Body for Create Contest: " + responseData);		
-		
-		JSONParser jsonParser = new JSONParser();
-		JSONObject jsonObject = (JSONObject) jsonParser.parse(responseData);
-		String message=(String) jsonObject.get("message");
-		Boolean success=(Boolean) jsonObject.get("success");
+			
+		json=(JSONObject) jsonParser.parse(responseData);	
+		JSONObject data= (JSONObject)json.get("data");
+		company_id = Integer.parseInt(data.get("company_id").toString());
+		contest_id = Integer.parseInt(data.get("contest_id").toString());
+			
+		String message=(String) json.get("message");
+		Boolean success=(Boolean) json.get("success");
 		
 		Assert.assertEquals(statuscode, 200);
-		//Assert.assertEquals(success, "true");
 		Assert.assertTrue(success);
-		Assert.assertEquals(message, "Contest added successfully.");
-		
+		Assert.assertEquals(message, "Contest added successfully.");				
+	}
+	@Test(priority=3)
+	public void getContestDetails()
+	{
+		RequestSpecification req= RestAssured.given();
+		Response response = req.queryParam("contest_id",contest_id)
+                .queryParam("company_id",company_id)
+	   .get("https://dev-api.1huddle.co/api/rest/v2.0/contest/contest_details?");
+		System.out.println(response.getStatusCode());
+
 		
 	}
 

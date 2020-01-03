@@ -5,9 +5,11 @@
     <classes>
       <class name="com.api.qa.pages.RouterAPI">
         <methods>
+          <include name="CreateContest_POST"/>
           <include name="setup"/>
-          <include name="getContestDetails"/>
           <include name="TearDown"/>
+          <include name="ContestDetails_GET"/>
+          <include name="UpdateContest_PUT"/>
         </methods>
       </class> <!-- com.api.qa.pages.RouterAPI -->
     </classes>

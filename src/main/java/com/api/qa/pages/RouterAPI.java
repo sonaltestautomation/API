@@ -39,14 +39,16 @@ public class RouterAPI {
 	String token;
 	JSONObject json = new JSONObject();
 	JSONParser jsonParser = new JSONParser();
-	int company_id;
-	int contest_id;
+	Integer company_id;
+	Integer contest_id;
 	RequestSpecification req;
+	String contest_start_date;
+	String contest_end_date;
 	int no;
 
 	
-	 LocalDateTime startDate = LocalDateTime.now().plusMinutes(2);
-	 LocalDateTime endDate = LocalDateTime.now().plusMinutes(5);
+	 LocalDateTime startDate = LocalDateTime.now().plusMinutes(5);
+	 LocalDateTime endDate = LocalDateTime.now().plusMinutes(8);
      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
      
 	@BeforeMethod
@@ -57,7 +59,7 @@ public class RouterAPI {
 	
 
 	@Test(priority=1)
-	public void Login_Post() throws ParseException {
+	public void login_Post() throws ParseException {
 		
 		//Created by sonal	
 		//RequestSpecification req = RestAssured.given();
@@ -101,7 +103,7 @@ public class RouterAPI {
 		
 	}
 	@Test(priority=2)
-	public void CreateContest_POST() throws ParseException
+	public void createContest_POST() throws ParseException
 	{
 		//RequestSpecification req = RestAssured.given();
 		req.header("Content-Type", "application/json");
@@ -138,7 +140,7 @@ public class RouterAPI {
 		Assert.assertEquals(message, "Contest added successfully.");				
 	}
 	@Test(priority=3)
-	public void ContestDetails_GET() throws ParseException
+	public void contestDetails_GET() throws ParseException
 	{
 		
 		RestAssured.baseURI="https://dev-api.1huddle.co/api/rest/v2.0/contest";
@@ -153,13 +155,16 @@ public class RouterAPI {
 		System.out.println("Response Body for ContestDetails:"+responseData);
 		
 		json=(JSONObject)jsonParser.parse(responseData);
+		JSONObject data= (JSONObject)json.get("data");
+		JSONObject contest_description= (JSONObject)data.get("contest_description");
 		String message=(String)json.get("message");
-		
+		contest_start_date= (String)contest_description.get("contest_start_date");
+		contest_end_date= (String)contest_description.get("contest_end_date");
 		Assert.assertEquals(message, "Contest description fetch successfully");
 		
 	}
 	@Test(priority=4)
-	public void UpdateContest_PUT() throws ParseException
+	public void updateContest_PUT() throws ParseException
 	{
 		RestAssured.baseURI="https://dev-api.1huddle.co/api/rest/v2.0/contest";
 		req=RestAssured.given();
@@ -183,7 +188,7 @@ public class RouterAPI {
 		 Assert.assertEquals(message, "Contest details updated successfully");
 	}
 	@Test(priority=5)
-	public void addGameToContest_POST()
+	public void addGameToContest_POST() throws ParseException
 	{
 		//int[] gameid = new int[]{2871}; 
 		
@@ -196,12 +201,53 @@ public class RouterAPI {
 		json.put("company_id", company_id);
 		json.put("contest_id", contest_id);
 		json.put("game_ids", gameid);
-		json.put("game_start_date", ""+ startDate.format(formatter) +"");
-		json.put("game_end_date", ""+ endDate.format(formatter) +"");
+		json.put("limit_type", "DAILY");
+		json.put("game_start_date",contest_start_date);
+		json.put("game_end_date", contest_end_date);
+		req.body(json.toJSONString());
 		Response response=req.post("https://dev-api.1huddle.co/api/rest/v2.0/contest/add_game_to_contest");
 		String responseBody= response.asString();
 		System.out.println("Response body for AddGameINContest"+responseBody);
 		
+		 json=(JSONObject)jsonParser.parse(responseBody);
+		 String message= (String)json.get("message");
+		 Assert.assertEquals(message, "Game added in contest successfully.");		
+	}
+	@Test(priority=6)
+	public void updateGameToContest_PUT() throws ParseException
+	{
+		RestAssured.baseURI="https://dev-api.1huddle.co/api/rest/v2.0/contest";
+		req=RestAssured.given();
+		JSONArray gameid = new JSONArray();
+		gameid.put(2871);
+		JSONObject json = new JSONObject();
+		
+		req.header("Content-Type","application/json");
+		req.header("session-token",token);		
+		json.put("company_id", company_id);
+		json.put("contest_id", contest_id);
+		json.put("game_ids", gameid);
+		json.put("attempt_type", "DAILY");
+		json.put("attempt_count",5);
+		json.put("game_start_date",contest_start_date);
+		json.put("game_end_date", contest_end_date);
+		
+		req.body(json.toJSONString());
+		Response response= req.put("/update_games_in_contest");
+		String responseBody=response.asString();
+		System.out.println("Response Body for Update Game In Contest:" +responseBody);
+		 json=(JSONObject)jsonParser.parse(responseBody);
+		 String message= (String)json.get("message");
+		Assert.assertEquals(message, "Game in contest updated successfully.");
+		
+	}
+	@Test(priority=7)
+	public void addAssignment_POST()
+	{
+		req.header("Content-Type","application/json");
+		req.header("session-token",token);	
+		
+		//JSONObject jsonObject =new JSONObject(jsonStr);
 		
 	}
 

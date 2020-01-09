@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.eclipse.persistence.sessions.serializers.JSONSerializer;
@@ -48,7 +49,7 @@ public class RouterAPI {
 
 	
 	 LocalDateTime startDate = LocalDateTime.now().plusMinutes(5);
-	 LocalDateTime endDate = LocalDateTime.now().plusMinutes(8);
+	 LocalDateTime endDate = LocalDateTime.now().plusMinutes(10);
      DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
      
 	@BeforeMethod
@@ -242,13 +243,54 @@ public class RouterAPI {
 		
 	}
 	@Test(priority=7)
-	public void addAssignment_POST()
+	public void addAssignment_POST() throws ParseException
 	{
 		req.header("Content-Type","application/json");
 		req.header("session-token",token);	
+	
+		JSONArray deptArray= new JSONArray();
+		deptArray.put(8153);
 		
-		//JSONObject jsonObject =new JSONObject(jsonStr);
+		JSONObject jsonLocation = new JSONObject();
+		jsonLocation.put("location_id", 5078);
+		jsonLocation.put("location_name", "Test Location1");
+		jsonLocation.put("is_all", false);
+		jsonLocation.put("departments", deptArray);
 		
+		JSONArray recipientsArray= new JSONArray();
+		recipientsArray.put(jsonLocation);
+		
+		JSONObject json = new JSONObject();
+		json.put("company_id", company_id);
+		json.put("contest_id", contest_id);
+		json.put("is_all", false);
+		json.put("recipients", recipientsArray);
+		
+		req.body(json.toJSONString());
+		Response response= req.post("https://dev-api.1huddle.co/api/rest/v2.0/contest/add_assignment");
+		String responseBody=response.asString();
+		System.out.println("Response Body for add assignment:" +responseBody);
+		json=(JSONObject)jsonParser.parse(responseBody);
+		String message= (String)json.get("message");
+		Assert.assertEquals(message, "Contest assigned successfully.");
+		
+	}
+	@Test(priority=8)
+	public void publish_POST() throws ParseException
+	{
+		req.header("Content-Type","application/json");
+		req.header("session-token",token);
+		
+		json.put("company_id", company_id);
+		json.put("contest_id",contest_id);
+		
+		req.body(json.toJSONString());
+		Response response= req.post("https://dev-api.1huddle.co/api/rest/v2.0/contest/publish");
+		String responseBody= response.asString();
+		System.out.println("Response Body for Publish Contest :" +responseBody);
+		json=(JSONObject)jsonParser.parse(responseBody);
+		String message=(String)json.get("message");
+		Assert.assertEquals(message, "Contest published successfully");
 	}
 
 	@AfterMethod

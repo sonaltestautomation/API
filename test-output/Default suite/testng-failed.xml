@@ -5,9 +5,9 @@
     <classes>
       <class name="com.api.qa.pages.RouterAPI">
         <methods>
-          <include name="updateGameToContest_PUT"/>
           <include name="setup"/>
           <include name="TearDown"/>
+          <include name="publish_POST"/>
         </methods>
       </class> <!-- com.api.qa.pages.RouterAPI -->
     </classes>

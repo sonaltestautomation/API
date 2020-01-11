@@ -46,7 +46,7 @@ public class RouterAPI {
 	String contest_start_date;
 	String contest_end_date;
 	int no;
-
+	String apiBasePath="https://dev-api.1huddle.co/";
 	
 	 LocalDateTime startDate = LocalDateTime.now().plusMinutes(5);
 	 LocalDateTime endDate = LocalDateTime.now().plusMinutes(10);
@@ -62,8 +62,6 @@ public class RouterAPI {
 	@Test(priority=1)
 	public void login_Post() throws ParseException {
 		
-		//Created by sonal	
-		//RequestSpecification req = RestAssured.given();
 		req.header("Content-Type", "application/json");
 		req.header("user-type", "manager");
 		req.header("locale", "en");
@@ -72,16 +70,12 @@ public class RouterAPI {
 
 		json.put("email", "apiautomationmanager@gmail.com");
 		json.put("password", "pass");
-
 		req.body(json.toJSONString());
-
-		Response response = req.post("https://dev-api.1huddle.co/api/rest/v1.5/auth/login");
+		Response response = req.post(apiBasePath + "api/rest/v1.5/auth/login");
 		int statuscode = response.getStatusCode();
 		ResponseBody body=response.getBody();
-		String responseData=body.asString();
-		
-		System.out.println("Response Body for Login: "+responseData);		
-		
+		String responseData=body.asString();		
+		System.out.println("Response Body for Login: "+responseData);				
 	
 		//try {
 			JSONObject jsonObject = (JSONObject) jsonParser.parse(responseData);
@@ -98,7 +92,6 @@ public class RouterAPI {
 			//e.printStackTrace();
 		//}					
 		Assert.assertEquals(statuscode, 200);
-		//Assert.assertEquals(success, true);
 		Assert.assertTrue(success);
 		Assert.assertEquals(message, "authenticated.");
 		
@@ -111,7 +104,6 @@ public class RouterAPI {
 		req.header("accept", "application/json");
 		req.header("session-token",token);	
 		
-
 		Random rand= new Random();
 		no=rand.nextInt(1000);
 		
@@ -121,7 +113,7 @@ public class RouterAPI {
 		json.put("contest_end_date", "" + endDate.format(formatter) + "");
 		
 		req.body(json.toJSONString());
-		Response response=req.post("https://dev-api.1huddle.co/api/rest/v2.0/contest/add");
+		Response response=req.post(apiBasePath + "api/rest/v2.0/contest/add");
 		int statuscode= response.getStatusCode();
 		ResponseBody body=response.getBody();
 		String responseData=body.asString();
@@ -144,7 +136,7 @@ public class RouterAPI {
 	public void contestDetails_GET() throws ParseException
 	{
 		
-		RestAssured.baseURI="https://dev-api.1huddle.co/api/rest/v2.0/contest";
+		RestAssured.baseURI=apiBasePath + "api/rest/v2.0/contest";
 		req= RestAssured.given();
 		req.header("session-token",token);	
 		req.header("Content-Type", "application/json");
@@ -167,7 +159,7 @@ public class RouterAPI {
 	@Test(priority=4)
 	public void updateContest_PUT() throws ParseException
 	{
-		RestAssured.baseURI="https://dev-api.1huddle.co/api/rest/v2.0/contest";
+		RestAssured.baseURI=apiBasePath + "api/rest/v2.0/contest";
 		req=RestAssured.given();
 		req.header("session-token",token);	
 		req.header("Content-Type", "application/json");
@@ -206,7 +198,7 @@ public class RouterAPI {
 		json.put("game_start_date",contest_start_date);
 		json.put("game_end_date", contest_end_date);
 		req.body(json.toJSONString());
-		Response response=req.post("https://dev-api.1huddle.co/api/rest/v2.0/contest/add_game_to_contest");
+		Response response=req.post(apiBasePath + "api/rest/v2.0/contest/add_game_to_contest");
 		String responseBody= response.asString();
 		System.out.println("Response body for AddGameINContest"+responseBody);
 		
@@ -217,7 +209,7 @@ public class RouterAPI {
 	@Test(priority=6)
 	public void updateGameToContest_PUT() throws ParseException
 	{
-		RestAssured.baseURI="https://dev-api.1huddle.co/api/rest/v2.0/contest";
+		RestAssured.baseURI=apiBasePath + "api/rest/v2.0/contest";
 		req=RestAssured.given();
 		JSONArray gameid = new JSONArray();
 		gameid.put(2871);
@@ -267,7 +259,7 @@ public class RouterAPI {
 		json.put("recipients", recipientsArray);
 		
 		req.body(json.toJSONString());
-		Response response= req.post("https://dev-api.1huddle.co/api/rest/v2.0/contest/add_assignment");
+		Response response= req.post(apiBasePath + "api/rest/v2.0/contest/add_assignment");
 		String responseBody=response.asString();
 		System.out.println("Response Body for add assignment:" +responseBody);
 		json=(JSONObject)jsonParser.parse(responseBody);
@@ -285,7 +277,7 @@ public class RouterAPI {
 		json.put("contest_id",contest_id);
 		
 		req.body(json.toJSONString());
-		Response response= req.post("https://dev-api.1huddle.co/api/rest/v2.0/contest/publish");
+		Response response= req.post(apiBasePath + "api/rest/v2.0/contest/publish");
 		String responseBody= response.asString();
 		System.out.println("Response Body for Publish Contest :" +responseBody);
 		json=(JSONObject)jsonParser.parse(responseBody);

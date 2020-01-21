@@ -1,15 +1,9 @@
 package com.api.qa.pages;
-
-import static org.testng.Assert.assertEquals;
-import java.io.IOException;
 import java.time.LocalDateTime;
+
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
-import org.eclipse.persistence.sessions.serializers.JSONSerializer;
 import org.json.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -19,16 +13,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
-import com.mashape.unirest.request.HttpRequestWithBody;
-import com.mashape.unirest.request.body.RequestBodyEntity;
-
 import io.restassured.RestAssured;
-import io.restassured.authentication.PreemptiveBasicAuthScheme;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
@@ -75,8 +60,8 @@ public class RouterAPI {
 		int statuscode = response.getStatusCode();
 		ResponseBody body=response.getBody();
 		String responseData=body.asString();		
-		System.out.println("Response Body for Login: "+responseData);				
-	
+		System.out.println("Response Body for Login: "+responseData);	
+		
 		//try {
 			JSONObject jsonObject = (JSONObject) jsonParser.parse(responseData);
 			JSONObject data= (JSONObject) jsonObject.get("data");
@@ -133,6 +118,33 @@ public class RouterAPI {
 		Assert.assertEquals(message, "Contest added successfully.");				
 	}
 	@Test(priority=3)
+	public void updateContestAddRewardToContest_PUT() throws ParseException
+	{
+		RestAssured.baseURI= apiBasePath + "api/rest/v2.0/contest";
+		req= RestAssured.given();
+		req.header("Content-Type","application/json");
+		req.header("session-token",token);
+		
+		json.put("company_id",company_id);
+		json.put("contest_id",contest_id);
+		
+		JSONObject rewards = new JSONObject();
+		rewards.put("category_id",1);
+		rewards.put("reward_id",5);
+		rewards.put("reward_desc","Reward is added to the contest");
+		json.put("rewards", rewards);
+		
+		req.body(json.toJSONString());
+		Response response= req.put("/update");
+		System.out.println("Response for adding rewards to contest:" +response.asString());
+		
+		String responseData= response.asString();
+		json=(JSONObject)jsonParser.parse(responseData);
+		 String message= (String)json.get("message");
+		 Assert.assertEquals(message, "Contest details updated successfully");	
+		
+	}
+	@Test(priority=4)
 	public void contestDetails_GET() throws ParseException
 	{
 		
@@ -156,7 +168,7 @@ public class RouterAPI {
 		Assert.assertEquals(message, "Contest description fetch successfully");
 		
 	}
-	@Test(priority=4)
+	@Test(priority=5)
 	public void updateContest_PUT() throws ParseException
 	{
 		RestAssured.baseURI=apiBasePath + "api/rest/v2.0/contest";
@@ -180,7 +192,7 @@ public class RouterAPI {
 		 String message= (String)json.get("message");
 		 Assert.assertEquals(message, "Contest details updated successfully");
 	}
-	@Test(priority=5)
+	@Test(priority=6)
 	public void addGameToContest_POST() throws ParseException
 	{
 		//int[] gameid = new int[]{2871}; 
@@ -206,7 +218,7 @@ public class RouterAPI {
 		 String message= (String)json.get("message");
 		 Assert.assertEquals(message, "Game added in contest successfully.");		
 	}
-	@Test(priority=6)
+	@Test(priority=7)
 	public void updateGameToContest_PUT() throws ParseException
 	{
 		RestAssured.baseURI=apiBasePath + "api/rest/v2.0/contest";
@@ -234,7 +246,7 @@ public class RouterAPI {
 		Assert.assertEquals(message, "Game in contest updated successfully.");
 		
 	}
-	@Test(priority=7)
+	@Test(priority=8)
 	public void addAssignment_POST() throws ParseException
 	{
 		req.header("Content-Type","application/json");
@@ -267,7 +279,7 @@ public class RouterAPI {
 		Assert.assertEquals(message, "Contest assigned successfully.");
 		
 	}
-	@Test(priority=8)
+	@Test(priority=9)
 	public void publish_POST() throws ParseException
 	{
 		req.header("Content-Type","application/json");

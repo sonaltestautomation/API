@@ -1,5 +1,6 @@
 package com.api.qa.pages;
 import java.time.LocalDateTime;
+import com.api.qa.base.BaseClass;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
@@ -20,7 +21,7 @@ import io.restassured.specification.RequestSpecification;
 
 
 
-public class RouterAPI {
+public class RouterAPI extends BaseClass{
 	
 	String token;
 	JSONObject json = new JSONObject();
@@ -295,6 +296,46 @@ public class RouterAPI {
 		json=(JSONObject)jsonParser.parse(responseBody);
 		String message=(String)json.get("message");
 		Assert.assertEquals(message, "Contest published successfully");
+	}
+	@Test(priority=10)
+	public void contest_DELETE() throws ParseException
+	{
+			
+		  req.header("Content-Type", "application/json"); 
+		  req.header("accept","application/json");
+		  req.header("session-token",token);
+		  
+		  Random rand= new Random(); 
+		  no=rand.nextInt(1000);
+		  
+		  json.put("company_id", "1201"); 
+		  json.put("contest_name", "Test Contest-" +no); 
+		  json.put("contest_start_date", "" + startDate.format(formatter) + "");
+		  json.put("contest_end_date", "" + endDate.format(formatter) + "");
+		  
+		  req.body(json.toJSONString()); 
+		  Response res=req.post(apiBasePath + "api/rest/v2.0/contest/add"); 
+		  int statuscode= res.getStatusCode();
+		  ResponseBody body=res.getBody(); 
+		  String responseData=body.asString();
+		  
+		  System.out.println("Contest is created for deleting: " +responseData);
+		  json=(JSONObject) jsonParser.parse(responseData); 
+		  JSONObject data=(JSONObject)json.get("data"); 
+		  int contest_id1 =Integer.parseInt(data.get("contest_id").toString());
+		 	
+		  RequestSpecification request1 = RestAssured.given();
+		  request1.header("session-token",token);
+		
+		RestAssured.baseURI= apiBasePath + "api/rest/v2.0/contest";
+		
+		Response response=request1.queryParam("company_id", company_id).queryParam("contest_id", contest_id1).delete("/delete");
+		String responseBody=response.asString();
+		System.out.println("Response for Delete contest:" +responseBody);
+		json=(JSONObject)jsonParser.parse(responseBody);
+		String message= (String)json.get("message");
+		Assert.assertEquals(message, "contest deleted successfully");	
+		
 	}
 
 	@AfterMethod

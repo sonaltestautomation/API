@@ -7,8 +7,8 @@
         <methods>
           <include name="setup"/>
           <include name="TearDown"/>
-          <include name="updateContestAddRewardToContest_PUT"/>
-          <include name="publish_POST"/>
+          <include name="contest_DELETE"/>
+          <include name="setup1"/>
         </methods>
       </class> <!-- com.api.qa.pages.RouterAPI -->
     </classes>

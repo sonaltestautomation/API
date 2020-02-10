@@ -6,6 +6,4 @@
        <class name="com.api.qa.pages.RouterAPI" />
     </classes>
   </test>
- 
- 
 </suite>

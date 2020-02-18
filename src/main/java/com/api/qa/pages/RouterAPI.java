@@ -51,6 +51,7 @@ public class RouterAPI extends BaseClass{
 
 	@Test(priority=1)
 	public void login_Post() throws ParseException {
+		logger.debug("*****Post Request*******");
 		
 		req.header("Content-Type", "application/json");
 		req.header("user-type", "manager");

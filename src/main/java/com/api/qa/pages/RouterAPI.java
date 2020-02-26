@@ -5,6 +5,7 @@ import com.api.qa.base.BaseClass;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
+import org.apache.log4j.BasicConfigurator;
 import org.json.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -51,7 +52,8 @@ public class RouterAPI extends BaseClass{
 
 	@Test(priority=1)
 	public void login_Post() throws ParseException {
-		logger.debug("*****Post Request*******");
+		BasicConfigurator.configure();  
+		logger.info("*****Post Request*******");
 		
 		req.header("Content-Type", "application/json");
 		req.header("user-type", "manager");

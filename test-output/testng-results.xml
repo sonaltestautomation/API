@@ -2,132 +2,132 @@
 <testng-results ignored="0" total="10" passed="10" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2020-02-18T19:24:43 IST" name="TestNG" finished-at="2020-02-18T19:25:03 IST" duration-ms="20081">
+  <suite started-at="2020-02-27T19:45:09 IST" name="TestNG" finished-at="2020-02-27T19:45:29 IST" duration-ms="19582">
     <groups>
     </groups>
-    <test started-at="2020-02-18T19:24:43 IST" name="Tests" finished-at="2020-02-18T19:25:03 IST" duration-ms="20081">
+    <test started-at="2020-02-27T19:45:09 IST" name="Tests" finished-at="2020-02-27T19:45:29 IST" duration-ms="19582">
       <class name="com.api.qa.pages.RouterAPI">
-        <test-method is-config="true" signature="setup1()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:43 IST" name="setup1" finished-at="2020-02-18T19:24:43 IST" duration-ms="51" status="PASS">
+        <test-method is-config="true" signature="setup1()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:09 IST" name="setup1" finished-at="2020-02-27T19:45:09 IST" duration-ms="42" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup1 -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:43 IST" name="setup" finished-at="2020-02-18T19:24:43 IST" duration-ms="335" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:09 IST" name="setup" finished-at="2020-02-27T19:45:10 IST" duration-ms="421" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="login_Post()[pri:1, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:43 IST" name="login_Post" finished-at="2020-02-18T19:24:45 IST" duration-ms="2317" status="PASS">
+        <test-method signature="login_Post()[pri:1, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:10 IST" name="login_Post" finished-at="2020-02-27T19:45:12 IST" duration-ms="2343" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login_Post -->
-        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:45 IST" name="TearDown" finished-at="2020-02-18T19:24:45 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:12 IST" name="TearDown" finished-at="2020-02-27T19:45:12 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:45 IST" name="setup" finished-at="2020-02-18T19:24:45 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:12 IST" name="setup" finished-at="2020-02-27T19:45:12 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="createContest_POST()[pri:2, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:45 IST" name="createContest_POST" finished-at="2020-02-18T19:24:47 IST" duration-ms="1576" status="PASS">
+        <test-method signature="createContest_POST()[pri:2, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:12 IST" name="createContest_POST" finished-at="2020-02-27T19:45:13 IST" duration-ms="1495" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createContest_POST -->
-        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:47 IST" name="TearDown" finished-at="2020-02-18T19:24:47 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:13 IST" name="TearDown" finished-at="2020-02-27T19:45:13 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:47 IST" name="setup" finished-at="2020-02-18T19:24:47 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:13 IST" name="setup" finished-at="2020-02-27T19:45:13 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="updateContestAddRewardToContest_PUT()[pri:3, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:47 IST" name="updateContestAddRewardToContest_PUT" finished-at="2020-02-18T19:24:48 IST" duration-ms="1528" status="PASS">
+        <test-method signature="updateContestAddRewardToContest_PUT()[pri:3, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:13 IST" name="updateContestAddRewardToContest_PUT" finished-at="2020-02-27T19:45:15 IST" duration-ms="1463" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- updateContestAddRewardToContest_PUT -->
-        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:48 IST" name="TearDown" finished-at="2020-02-18T19:24:48 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:15 IST" name="TearDown" finished-at="2020-02-27T19:45:15 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TearDown -->
-        <test-method signature="contestDetails_GET()[pri:4, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:48 IST" name="contestDetails_GET" finished-at="2020-02-18T19:24:50 IST" duration-ms="1575" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:15 IST" name="setup" finished-at="2020-02-27T19:45:15 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="contestDetails_GET()[pri:4, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:15 IST" name="contestDetails_GET" finished-at="2020-02-27T19:45:16 IST" duration-ms="1499" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- contestDetails_GET -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:48 IST" name="setup" finished-at="2020-02-18T19:24:48 IST" duration-ms="0" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:50 IST" name="TearDown" finished-at="2020-02-18T19:24:50 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:16 IST" name="TearDown" finished-at="2020-02-27T19:45:16 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:50 IST" name="setup" finished-at="2020-02-18T19:24:50 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:16 IST" name="setup" finished-at="2020-02-27T19:45:16 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="updateContest_PUT()[pri:5, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:50 IST" name="updateContest_PUT" finished-at="2020-02-18T19:24:52 IST" duration-ms="1596" status="PASS">
+        <test-method signature="updateContest_PUT()[pri:5, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:16 IST" name="updateContest_PUT" finished-at="2020-02-27T19:45:18 IST" duration-ms="1534" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- updateContest_PUT -->
-        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:52 IST" name="TearDown" finished-at="2020-02-18T19:24:52 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:18 IST" name="TearDown" finished-at="2020-02-27T19:45:18 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:52 IST" name="setup" finished-at="2020-02-18T19:24:52 IST" duration-ms="0" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="addGameToContest_POST()[pri:6, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:52 IST" name="addGameToContest_POST" finished-at="2020-02-18T19:24:53 IST" duration-ms="1549" status="PASS">
+        <test-method signature="addGameToContest_POST()[pri:6, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:18 IST" name="addGameToContest_POST" finished-at="2020-02-27T19:45:19 IST" duration-ms="1448" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- addGameToContest_POST -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:53 IST" name="setup" finished-at="2020-02-18T19:24:53 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:18 IST" name="setup" finished-at="2020-02-27T19:45:18 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:53 IST" name="TearDown" finished-at="2020-02-18T19:24:53 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:19 IST" name="setup" finished-at="2020-02-27T19:45:19 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:19 IST" name="TearDown" finished-at="2020-02-27T19:45:19 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TearDown -->
-        <test-method signature="updateGameToContest_PUT()[pri:7, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:53 IST" name="updateGameToContest_PUT" finished-at="2020-02-18T19:24:55 IST" duration-ms="1541" status="PASS">
+        <test-method signature="updateGameToContest_PUT()[pri:7, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:19 IST" name="updateGameToContest_PUT" finished-at="2020-02-27T19:45:21 IST" duration-ms="1455" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- updateGameToContest_PUT -->
-        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:55 IST" name="TearDown" finished-at="2020-02-18T19:24:55 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:21 IST" name="TearDown" finished-at="2020-02-27T19:45:21 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:55 IST" name="setup" finished-at="2020-02-18T19:24:55 IST" duration-ms="0" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="addAssignment_POST()[pri:8, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:55 IST" name="addAssignment_POST" finished-at="2020-02-18T19:24:56 IST" duration-ms="1570" status="PASS">
+        <test-method signature="addAssignment_POST()[pri:8, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:21 IST" name="addAssignment_POST" finished-at="2020-02-27T19:45:22 IST" duration-ms="1594" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- addAssignment_POST -->
-        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:56 IST" name="TearDown" finished-at="2020-02-18T19:24:56 IST" duration-ms="0" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- TearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:56 IST" name="setup" finished-at="2020-02-18T19:24:56 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:21 IST" name="setup" finished-at="2020-02-27T19:45:21 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="publish_POST()[pri:9, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:56 IST" name="publish_POST" finished-at="2020-02-18T19:24:59 IST" duration-ms="3249" status="PASS">
+        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:22 IST" name="TearDown" finished-at="2020-02-27T19:45:22 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:22 IST" name="setup" finished-at="2020-02-27T19:45:22 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="publish_POST()[pri:9, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:22 IST" name="publish_POST" finished-at="2020-02-27T19:45:26 IST" duration-ms="3152" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- publish_POST -->
-        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:59 IST" name="TearDown" finished-at="2020-02-18T19:24:59 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:26 IST" name="TearDown" finished-at="2020-02-27T19:45:26 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:59 IST" name="setup" finished-at="2020-02-18T19:24:59 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:26 IST" name="setup" finished-at="2020-02-27T19:45:26 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="contest_DELETE()[pri:10, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:24:59 IST" name="contest_DELETE" finished-at="2020-02-18T19:25:03 IST" duration-ms="3151" status="PASS">
+        <test-method signature="contest_DELETE()[pri:10, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:26 IST" name="contest_DELETE" finished-at="2020-02-27T19:45:29 IST" duration-ms="3086" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- contest_DELETE -->
-        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-18T19:25:03 IST" name="TearDown" finished-at="2020-02-18T19:25:03 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="TearDown()[pri:0, instance:com.api.qa.pages.RouterAPI@11a9e7c8]" started-at="2020-02-27T19:45:29 IST" name="TearDown" finished-at="2020-02-27T19:45:29 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TearDown -->

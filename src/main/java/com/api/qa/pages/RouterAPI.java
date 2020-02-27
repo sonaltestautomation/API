@@ -28,21 +28,6 @@ public class RouterAPI extends BaseClass{
 	 Author: Sonal Kharade
 	 */
 	
-	String token;
-	JSONObject json = new JSONObject();
-	JSONParser jsonParser = new JSONParser();
-	Integer company_id;
-	Integer contest_id;
-	RequestSpecification req;
-	String contest_start_date;
-	String contest_end_date;
-	int no;
-	String apiBasePath="https://dev-api.1huddle.co/";
-	
-	 LocalDateTime startDate = LocalDateTime.now().plusMinutes(5);
-	 LocalDateTime endDate = LocalDateTime.now().plusMinutes(10);
-     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-     
 	@BeforeMethod
 	public void setup() {
 		
@@ -52,7 +37,7 @@ public class RouterAPI extends BaseClass{
 
 	@Test(priority=1)
 	public void login_Post() throws ParseException {
-		BasicConfigurator.configure();  
+		
 		logger.info("*****Post Request*******");
 		
 		req.header("Content-Type", "application/json");
